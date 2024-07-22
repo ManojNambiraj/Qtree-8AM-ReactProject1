@@ -1,18 +1,19 @@
-import './App.css';
-import Routing from './Routing';
+import "./App.css";
+import Routing from "./Routing";
+import ShoppingCart from "./ShoppingCart";
 // import Button from './Button';
 // import States from './States';
 
 function App() {
-
   // const foo = (value) => {
   //   alert(value);
   // }
 
   return (
     <div className="App">
+      <ShoppingCart />
 
-      <Routing />
+      {/* <Routing /> */}
 
       {/* <States /> */}
 
@@ -29,6 +30,5 @@ function App() {
 }
 
 export default App;
-
 
 // Hooks -> useState, useReducer, useEffect
