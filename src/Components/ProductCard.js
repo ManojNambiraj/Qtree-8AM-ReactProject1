@@ -1,5 +1,4 @@
 import React from "react";
-import img1 from "../assets/images/img1.webp";
 
 function ProductCard(props) {
   return (
@@ -15,7 +14,11 @@ function ProductCard(props) {
         <h6 className="card-title">Rs: {props.prod.price}</h6>
         <p className="card-text">{props.prod.desc}</p>
         <p>{props.prod.isStock == true ? "-in stock" : "-out of stock"}</p>
-        <button className="btn btn-primary" disabled={!props.prod.isStock}>
+        <button
+          className="btn btn-primary"
+          disabled={!props.prod.isStock}
+          onClick={() => props.handleAddToCart(props.prod)}
+        >
           Add to cart
         </button>
       </div>
