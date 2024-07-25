@@ -7,7 +7,12 @@ function CartItems(props) {
         <div class="fw-bold">{props.item.productName}</div>
         {props.item.price}
       </div>
-      <span class="badge text-bg-primary rounded-pill">X</span>
+      <button
+        class="badge text-bg-primary rounded-pill"
+        onClick={() => props.handleRemoveFromCart(props.item)}
+      >
+        X
+      </button>
     </li>
   );
 }

@@ -66,6 +66,14 @@ function ShoppingCart() {
     setTotal(total + data.price);
   };
 
+  const handleRemoveFromCart = (item) => {
+    const index = cartItems.findIndex((cItem) => cItem.id == item.id);
+
+    cartItems.splice(index, 1);
+    setCartItems([...cartItems]);
+    setTotal(total - item.price);
+  };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -82,7 +90,12 @@ function ShoppingCart() {
           <h3>Count: {cartItems.length}</h3>
           <ol class="list-group list-group-numbered">
             {cartItems.map((item) => {
-              return <CartItems item={item} />;
+              return (
+                <CartItems
+                  item={item}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                />
+              );
             })}
           </ol>
           <h3>Total: {total}</h3>
