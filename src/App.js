@@ -1,4 +1,5 @@
 import "./App.css";
+import UserApp from "./Pages/UserApp";
 import Routing from "./Routing";
 import ShoppingCart from "./ShoppingCart";
 // import Button from './Button';
@@ -11,7 +12,10 @@ function App() {
 
   return (
     <div className="App">
-      <ShoppingCart />
+  
+      <UserApp />
+
+      {/* <ShoppingCart /> */}
 
       {/* <Routing /> */}
 
