@@ -1,7 +1,9 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import UserApp from "./Pages/UserApp";
 import Routing from "./Routing";
 import ShoppingCart from "./ShoppingCart";
+import CreateUser from "./Pages/CreateUser";
 // import Button from './Button';
 // import States from './States';
 
@@ -12,8 +14,12 @@ function App() {
 
   return (
     <div className="App">
-  
-      <UserApp />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<UserApp />} />
+          <Route path="/create" element={<CreateUser />} />
+        </Routes>
+      </BrowserRouter>
 
       {/* <ShoppingCart /> */}
 
