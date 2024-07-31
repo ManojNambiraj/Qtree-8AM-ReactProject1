@@ -6,16 +6,26 @@ function UserApp() {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const userList = await axios.get(
-        "https://668d4175099db4c579f24e88.mockapi.io/user"
-      );
-
-      setUserData(userList.data);
-    };
-
     getData();
   }, []);
+
+  const getData = async () => {
+    const userList = await axios.get(
+      "https://668d4175099db4c579f24e88.mockapi.io/user"
+    );
+
+    setUserData(userList.data);
+  };
+
+  const handleDelete = async (id) => {
+    const deleteUser = await axios.delete(
+      `https://668d4175099db4c579f24e88.mockapi.io/user/${id}`
+    );
+
+    if (deleteUser) {
+      getData();
+    }
+  };
 
   return (
     <>
@@ -30,6 +40,7 @@ function UserApp() {
             <th scope="col">Age</th>
             <th scope="col">Mobile</th>
             <th scope="col">Email</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +52,22 @@ function UserApp() {
                 <td>{item.age}</td>
                 <td>{item.mobile}</td>
                 <td>{item.email}</td>
+                <td>
+                  <Link
+                    to={`/edit/${item.id}`}
+                    className="btn btn-success btn-sm"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => {
+                      handleDelete(item.id);
+                    }}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}

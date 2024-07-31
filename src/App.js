@@ -4,6 +4,7 @@ import UserApp from "./Pages/UserApp";
 import Routing from "./Routing";
 import ShoppingCart from "./ShoppingCart";
 import CreateUser from "./Pages/CreateUser";
+import EditUser from "./Pages/EditUser";
 // import Button from './Button';
 // import States from './States';
 
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<UserApp />} />
           <Route path="/create" element={<CreateUser />} />
+          <Route path="/edit/:id" element={<EditUser />} />
         </Routes>
       </BrowserRouter>
 

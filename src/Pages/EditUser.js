@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import "./CreateUser.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-function CreateUser() {
+function EditUser() {
+  const { id } = useParams();
+
   const navigate = useNavigate();
 
   const [userInput, setUserInput] = useState({
@@ -14,6 +15,18 @@ function CreateUser() {
     password: "",
   });
 
+  useEffect(() => {
+    const getData = async () => {
+      const user = await axios.get(
+        `https://668d4175099db4c579f24e88.mockapi.io/user/${id}`
+      );
+
+      setUserInput(user.data);
+    };
+
+    getData();
+  }, []);
+
   const handleChange = ({ target: { value, name } }) => {
     setUserInput({ ...userInput, [name]: value });
   };
@@ -23,8 +36,8 @@ function CreateUser() {
 
     const { name, age, mobile, email, password } = userInput;
 
-    const postData = await axios.post(
-      "https://668d4175099db4c579f24e88.mockapi.io/user",
+    const postData = await axios.put(
+      `https://668d4175099db4c579f24e88.mockapi.io/user/${id}`,
       {
         name,
         age,
@@ -35,7 +48,7 @@ function CreateUser() {
     );
 
     if (postData) {
-      alert("User Created Successfully");
+      alert("User Updated Successfully");
       navigate("/");
     }
   };
@@ -43,7 +56,7 @@ function CreateUser() {
   return (
     <div className="main_container">
       <form onSubmit={handleSubmit}>
-        <h2 className="mb-4">User Register</h2>
+        <h2 className="mb-4">Updating User</h2>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">
             Name
@@ -82,7 +95,7 @@ function CreateUser() {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name="mobile"
-            value={userInput.number}
+            value={userInput.mobile}
             onChange={handleChange}
           />
         </div>
@@ -122,4 +135,4 @@ function CreateUser() {
   );
 }
 
-export default CreateUser;
+export default EditUser;
