@@ -5,6 +5,7 @@ import Routing from "./Routing";
 import ShoppingCart from "./ShoppingCart";
 import CreateUser from "./Pages/CreateUser";
 import EditUser from "./Pages/EditUser";
+import ContextAPI from "./Pages/ContextAPI";
 // import Button from './Button';
 // import States from './States';
 
@@ -15,13 +16,16 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+
+    <ContextAPI />
+
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserApp />} />
           <Route path="/create" element={<CreateUser />} />
           <Route path="/edit/:id" element={<EditUser />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
 
       {/* <ShoppingCart /> */}
 
