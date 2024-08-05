@@ -6,6 +6,7 @@ import ShoppingCart from "./ShoppingCart";
 import CreateUser from "./Pages/CreateUser";
 import EditUser from "./Pages/EditUser";
 import ContextAPI from "./Pages/ContextAPI";
+import ReduxDemo from "./ReduxDemo";
 // import Button from './Button';
 // import States from './States';
 
@@ -17,7 +18,9 @@ function App() {
   return (
     <div className="App">
 
-    <ContextAPI />
+      <ReduxDemo />
+
+    {/* <ContextAPI /> */}
 
       {/* <BrowserRouter>
         <Routes>
