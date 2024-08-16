@@ -11,15 +11,18 @@ function UserApp() {
 
   const getData = async () => {
     const userList = await axios.get(
-      "https://668d4175099db4c579f24e88.mockapi.io/user"
+      "http://localhost:8000/users"
     );
 
-    setUserData(userList.data);
+    console.log(userList);
+    
+
+    setUserData(userList.data.message);
   };
 
   const handleDelete = async (id) => {
     const deleteUser = await axios.delete(
-      `https://668d4175099db4c579f24e88.mockapi.io/user/${id}`
+      `http://localhost:8000/delete/${id}`
     );
 
     if (deleteUser) {
@@ -54,14 +57,14 @@ function UserApp() {
                 <td>{item.email}</td>
                 <td>
                   <Link
-                    to={`/edit/${item.id}`}
+                    to={`/edit/${item._id}`}
                     className="btn btn-success btn-sm"
                   >
                     Edit
                   </Link>
                   <button
                     onClick={() => {
-                      handleDelete(item.id);
+                      handleDelete(item._id);
                     }}
                     className="btn btn-danger btn-sm"
                   >

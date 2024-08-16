@@ -18,17 +18,17 @@ function App() {
   return (
     <div className="App">
 
-      <ReduxDemo />
+      {/* <ReduxDemo /> */}
 
     {/* <ContextAPI /> */}
 
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserApp />} />
           <Route path="/create" element={<CreateUser />} />
           <Route path="/edit/:id" element={<EditUser />} />
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
       {/* <ShoppingCart /> */}
 

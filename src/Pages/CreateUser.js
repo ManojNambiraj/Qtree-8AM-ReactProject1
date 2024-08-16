@@ -24,7 +24,7 @@ function CreateUser() {
     const { name, age, mobile, email, password } = userInput;
 
     const postData = await axios.post(
-      "https://668d4175099db4c579f24e88.mockapi.io/user",
+      "http://localhost:8000/create",
       {
         name,
         age,

@@ -17,11 +17,9 @@ function EditUser() {
 
   useEffect(() => {
     const getData = async () => {
-      const user = await axios.get(
-        `https://668d4175099db4c579f24e88.mockapi.io/user/${id}`
-      );
+      const user = await axios.get(`http://localhost:8000/user/${id}`);
 
-      setUserInput(user.data);
+      setUserInput(user.data.message);
     };
 
     getData();
@@ -36,16 +34,13 @@ function EditUser() {
 
     const { name, age, mobile, email, password } = userInput;
 
-    const postData = await axios.put(
-      `https://668d4175099db4c579f24e88.mockapi.io/user/${id}`,
-      {
-        name,
-        age,
-        mobile,
-        email,
-        password,
-      }
-    );
+    const postData = await axios.put(`http://localhost:8000/edit/${id}`, {
+      name,
+      age,
+      mobile,
+      email,
+      password,
+    });
 
     if (postData) {
       alert("User Updated Successfully");
@@ -113,7 +108,7 @@ function EditUser() {
             onChange={handleChange}
           />
         </div>
-        <div class="mb-3">
+        {/* <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">
             Password
           </label>
@@ -125,7 +120,7 @@ function EditUser() {
             value={userInput.password}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
         <button type="submit" class="btn btn-primary">
           Submit
